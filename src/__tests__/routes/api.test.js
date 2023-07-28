@@ -32,6 +32,7 @@ describe('Testes dos endpoints da api', () => {
     });
 
     it('deve ser possível criar um novo usuário', async () => {
+        //TODO: testando muita coisa em um mesmo teste
         const response = await request(BASE_URL)
             .post('/api/users')
             .set('Content-Type', 'application/json')

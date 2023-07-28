@@ -33,11 +33,13 @@ router.post('/users', userCreationAdapter, async (req, res) => {
     const encryptedUser = req.encryptedUser;
 
     try {
-        // TODO
-
         if(!encryptedUser) throw new Error();
 
-        return res.status(201).json({});
+        const { dataValues } = await UserController.createUser(encryptedUser);
+
+        const createdUser = {...dataValues};
+
+        return res.status(201).json(createdUser);
     } catch (error) {
         console.log(error);
         return res.status(400).end();
